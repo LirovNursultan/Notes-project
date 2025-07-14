@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Удалить {{ note.title }}</title>
+</head>
+<body>
+    <h2>Вы точно хотите удалить эту запись?</h2>
+    <p><strong>{{ note.title }}</strong></p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="confirm">Удалить</button>
+        <button type="submit" name="cancel">Отмена</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ note.title }}</title>
+</head>
+<body>
+    <h2>{{ note.title }}</h2>
+    <p>{{ note.description }}</p>
+    <p>Понятность: {{ note.understanding }} / 5</p>
+
+    <a href="{% url 'home' %}"><button>Выйти</button></a>
+    <a href="{% url 'edit_note' note.id %}"><button>Изменить</button></a>
+</body>
+</html>

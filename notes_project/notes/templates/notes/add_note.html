@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить конспект</title>
+</head>
+<body>
+    <h2>Добавить конспект</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Готово</button>
+    </form>
+
+    <br>
+    <a href="{% url 'home' %}">Назад</a>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать: {{ note.title }}</title>
+</head>
+<body>
+    <h2>Редактировать конспект</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Сохранить</button>
+    </form>
+
+    <br>
+    <a href="{% url 'home' %}">Отмена</a>
+</body>
+</html>
