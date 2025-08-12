@@ -8,6 +8,12 @@
     <h2>{{ note.title }}</h2>
     <p>{{ note.description }}</p>
     <p>Понятность: {{ note.understanding }} / 5</p>
+    <p><strong>Описание:</strong> {{ note.description }}</p>
+    <p><strong>Понятность:</strong> {{ note.get_understanding_display }}</p>
+    <p><strong>Что изучено:</strong> {{ note.what_learned }}</p>
+    <p><strong>Что непонятно:</strong> {{ note.what_not_understood }}</p>
+    <p><strong>Категория:</strong> {{ note.category }}</p>
+    <p><strong>Подкатегория:</strong> {{ note.subcategory }}</p>
 
     <a href="{% url 'home' %}"><button>Выйти</button></a>
     <a href="{% url 'edit_note' note.id %}"><button>Изменить</button></a>

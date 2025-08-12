@@ -26,5 +26,15 @@
     {% empty %}
         <p>Пока нет ни одного конспекта.</p>
     {% endfor %}
+
+    <form method="get" style="margin-bottom: 20px;">
+    <label for="category">Фильтр по категории:</label>
+    <select name="category" id="category" onchange="this.form.submit()">
+        <option value="">-- Все категории --</option>
+        <option value="IT" {% if selected_category == 'IT' %}selected{% endif %}>IT</option>
+        <option value="Languages" {% if selected_category == 'Languages' %}selected{% endif %}>Языки</option>
+    </select>
+    </form>
+
 </body>
 </html>

@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render, redirect
 from .models import Note
 from .forms import NoteForm
@@ -42,3 +43,14 @@ def delete_note(request, note_id):
         else:
             return redirect('home')
     return render(request, 'notes/delete_note.html', {'note': note})
+
+def home(request):
+    category = request.GET.get('category')
+    if category:
+        notes = Note.objects.filter(category=category).order_by('-id')
+    else:
+        notes = Note.objects.all().order_by('-id')
+    return render(request, 'notes/home.html', {'notes': notes, 'selected_category': category})
+
+
+
