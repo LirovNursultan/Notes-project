@@ -1,8 +1,19 @@
 import os
 import openai
 from dotenv import load_dotenv
+import tensorflow as tf
+
+# model = tf.keras.models.load_model('path/to/your_model.h5')
+#
+# def predict(input_data):
+#     # input_data should be preprocessed to match the model's input shape
+#     prediction = model.predict(input_data)
+#     return prediction
+
 
 load_dotenv()
+
+import openai
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def predict_ai(note_text: str) -> str:

@@ -2,18 +2,70 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Редактировать: {{ note.title }}</title>
+    <title>Редактировать запись</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 600px;
+            margin-top: 40px;
+        }
+        .btn {
+            width: 130px;
+            height: 40px;
+        }
+    </style>
 </head>
-<body>
-    <h2>Редактировать конспект</h2>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="card shadow-lg p-4">
+            <h2 class="text-center mb-4 text-primary">Редактировать запись</h2>
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Сохранить</button>
-    </form>
+            <form method="POST">
+                {% csrf_token %}
 
-    <br>
-    <a href="{% url 'home' %}">Отмена</a>
+                <div class="mb-3">
+                    <h6><label class="form-label">Тема</label></h6>
+                    <input type="text" name="title" class="form-control" value="{{ note.title }}" required>
+                </div>
+                <div class="mb-3">
+                    <h6><label class="form-label">Описание</label></h6>
+                    <textarea name="description" class="form-control" rows="3">{{ note.description }}</textarea>
+                </div>
+
+                <div class="mb-3">
+                    <h6><label class="form-label">Что изучил нового</label></h6>
+                    <textarea name="what_learned" class="form-control" rows="2">{{ note.what_learned }}</textarea>
+                </div>
+
+                <div class="mb-3">
+                    <h6><label class="form-label">Что непонятно</label></h6>
+                    <textarea name="what_not_understood" class="form-control" rows="2">{{ note.what_not_understood }}</textarea>
+                </div>
+
+                <div class="mb-3">
+                    <h6><label class="form-label">Оценка понятности (1-5)</label></h6>
+                    <input type="number" name="understanding" class="form-control" min="1" max="5" value="{{ note.understanding }}">
+                </div>
+
+                <div class="mb-3">
+                    <h6><label class="form-label">Категория</label></h6>
+                    <select name="category" class="form-select">
+                        <option value="IT" {% if note.category == "IT" %}selected{% endif %}>IT</option>
+                        <option value="Языки" {% if note.category == "Языки" %}selected{% endif %}>Языки</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <h6><label class="form-label">Подкатегория</label></h6>
+                    <input type="text" name="subcategory" class="form-control" value="{{ note.subcategory }}">
+                </div>
+                <br>
+                <div class="d-flex justify-content-between">
+                    <a href="{% url 'home' %}" class="btn btn-secondary">Назад</a>
+                    <button type="submit" class="btn btn-success">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
